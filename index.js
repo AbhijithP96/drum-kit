@@ -35,15 +35,27 @@ function play(key){
     }
 }
 
+function buttonAnimate(key){
+
+    var active = document.querySelector("." + key);
+    active.classList.add("pressed");
+
+    setTimeout(function(){
+        active.classList.remove("pressed")
+    }, 100);
+}
+
 for(var i =0; i<numberOfButtons; i++){
 
     document.querySelectorAll(".drum")[i].addEventListener("click" , function(){
         var text = this.innerHTML;
         play(text);
+        buttonAnimate(text);
     });
 }
 
 document.addEventListener("keydown" , function(event){
     var text = event.key;
     play(text);
+    buttonAnimate(text);
 })
